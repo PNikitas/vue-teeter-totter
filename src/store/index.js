@@ -1,12 +1,11 @@
 import { createStore } from 'vuex'
 
+import simulationModule from '@/store/modules/simulationModule';
+import controlModule from '@/store/modules/controlModule';
+
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  }
-})
+    simulationModule,
+    controlModule,
+  },
+});
