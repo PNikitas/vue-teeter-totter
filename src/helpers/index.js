@@ -13,11 +13,13 @@ export const calculateLandingPosition = (className, leftShape, angle) => {
     return boardBoundingRect.top + boardCenter * (leftShape.shapePositionX / (BOARD_LENGTH_PX / 2)) - leftShape.size;
 };
 
+/* J = m * R^2 */
 export const calculateInertia = (shapesWeight, shapesPosition) => {
     const mr2 = shapesWeight.map((item, index) => item * Math.pow(shapesPosition[index] / LENGTH_MULTIPLIER, 2));
     return mr2.reduce((acc, item) => acc + item);
 };
 
+/* E = M / J */
 export const calculateAcceleration = (totalMomentum, inertia) => {
     return (totalMomentum.rightTotalMomentum - totalMomentum.leftTotalMomentum) / (inertia + BOARD_INERTIA);
 };

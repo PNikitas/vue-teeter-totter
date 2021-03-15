@@ -100,8 +100,9 @@ export default {
             clearTimeout(this.handleFall);
           } else {
             if (this.isAutoplay) {
-              let predictRightMomentum = this.rightShape.weight * (this.rightShape.shapePositionX + this.rightShape.size / 2)/50 + this.totalMomentum.rightTotalMomentum;
-              let predictLeftMomentum = this.leftShape.weight * (BOARD_LENGTH_PX / 2 - this.leftShape.shapePositionX - this.leftShape.size / 2)/50 + this.totalMomentum.leftTotalMomentum;
+              /* M = m * R */
+              let predictRightMomentum = this.rightShape.weight * (this.rightShape.shapePositionX + this.rightShape.size / 2) / LENGTH_MULTIPLIER + this.totalMomentum.rightTotalMomentum;
+              let predictLeftMomentum = this.leftShape.weight * (BOARD_LENGTH_PX / 2 - this.leftShape.shapePositionX - this.leftShape.size / 2) / LENGTH_MULTIPLIER + this.totalMomentum.leftTotalMomentum;
 
               if (predictRightMomentum > predictLeftMomentum) {
                 this.moveLeft();
@@ -134,6 +135,7 @@ export default {
         this.setLeftTotalWeight(this.leftShape.weight);
         this.setRightTotalWeight(this.rightShape.weight);
 
+        /* M = m * R */
         this.setLeftTotalMomentum(this.leftShape.weight * (BOARD_LENGTH_PX / 2 - this.leftShape.shapePositionX - this.leftShape.size / 2) / LENGTH_MULTIPLIER);
         this.setRightTotalMomentum(this.rightShape.weight * (this.rightShape.shapePositionX + this.rightShape.size / 2) / LENGTH_MULTIPLIER);
 
